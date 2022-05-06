@@ -49,7 +49,7 @@ UDP_PORT_NO = 12000
 socket.setdefaulttimeout(1)
 clientSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-
+clientSock.bind(('', 12001))
 
 # List of presnts that client will try to send to server
 packetsToSend = []
@@ -59,6 +59,53 @@ shoe = Present('A new shoe')
 packet1 = Packet(('127.0.0.1', 12001), ('127.0.0.1', 12001),
 1, 1, 8, 20, 0, 2, shoe)
 packetsToSend.append(packet1)
+
+
+Ps5 = Present('Ps5')
+packet2 = Packet(('127.0.0.1', 12001), ('127.0.0.1', 12001),
+1, 1, 8, 20, 0, 2, Ps5)
+packetsToSend.append(packet2)
+
+
+Chocolate = Present('Chocolate')
+packet3 = Packet(('127.0.0.1', 12001), ('127.0.0.1', 12001),
+1, 1, 8, 20, 0, 2, Chocolate)
+packetsToSend.append(packet3)
+
+
+Television = Present('Television')
+packet4 = Packet(('127.0.0.1', 12001), ('127.0.0.1', 12001),
+1, 1, 8, 20, 0, 2, Television)
+packetsToSend.append(packet4)
+
+
+Sweater = Present('Sweater')
+packet5 = Packet(('127.0.0.1', 12001), ('127.0.0.1', 12001),
+1, 1, 8, 20, 0, 2, Sweater)
+packetsToSend.append(packet5)
+
+
+Airpods = Present('Airpods')
+packet6 = Packet(('127.0.0.1', 12001), ('127.0.0.1', 12001),
+1, 1, 8, 20, 0, 2, Airpods)
+packetsToSend.append(packet6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # List of clients familyandfriendsList will try to send to server
 familyandfriendsList = [('127.0.0.1', 12001)]
@@ -124,6 +171,8 @@ for packet in packetsToSend:
 			print('Present successfully delivered. Deleting present ...')
 			continue
 
+		elif receivedChecksum != calcChecksum:
+			print ('checksum mismatch')
 
 
 
